@@ -1,0 +1,19 @@
+name: Bug
+description: Something on the site is broken
+labels: ["bug"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Where
+      description: Page/section and device (e.g. Album on iPhone, dark mode)
+    validations: { required: true }
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened vs. what you expected
+    validations: { required: true }
+  - type: textarea
+    id: shots
+    attributes:
+      label: Screenshots

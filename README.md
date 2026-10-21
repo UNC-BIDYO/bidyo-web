@@ -59,6 +59,26 @@ open-next.config.ts           OpenNext adapter config
 - **Fonts are self-hosted**, so builds never depend on reaching Google Fonts.
 - Worker size today is about 1 MB gzipped. The free plan's limit is 3 MiB, so keep big libraries out of the server bundle.
 
+## Roadmap tracker
+
+The milestones and issues live in `.github/roadmap.json`. A readable copy is in [ROADMAP.md](ROADMAP.md).
+
+To put them on GitHub once the repo exists (one time, safe to re-run):
+
+1. Install the GitHub CLI from https://cli.github.com, then run `gh auth login`.
+2. From the project folder:
+
+   ```bash
+   npm run roadmap:seed -- --dry-run   # preview: 11 labels, 6 milestones, 37 issues
+   npm run roadmap:seed                # create them
+   ```
+
+3. Track progress on GitHub under **Issues → Milestones**. Issues labelled `needs-kurt` need an account, a decision or content from you.
+
+Optional board view: go to **Projects → New project → Board**, then add items from the repo with `is:issue`. Group by Milestone, or use Status columns.
+
+After changing `roadmap.json`, run `npm run roadmap:md` to refresh ROADMAP.md. Re-running the seed only adds new items; it never edits or closes existing issues.
+
 ## Environment variables
 
 - Local secrets go in `.dev.vars`. Copy `.dev.vars.example`. This file is git-ignored.

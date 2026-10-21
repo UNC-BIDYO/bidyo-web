@@ -1,0 +1,14 @@
+name: Content
+description: Copy, photos, video or team info to collect or update
+labels: ["type:content", "area:content"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What content
+      description: e.g. new album, updated officer list, FAQ answer
+    validations: { required: true }
+  - type: textarea
+    id: where
+    attributes:
+      label: Where it goes / links to files

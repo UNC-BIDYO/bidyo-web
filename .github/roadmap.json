@@ -1,0 +1,468 @@
+{
+  "labels": [
+    {
+      "name": "area:infra",
+      "color": "5c0a18",
+      "description": "Repo, hosting, domain, CI"
+    },
+    {
+      "name": "area:site",
+      "color": "8c0d22",
+      "description": "Public one-page site"
+    },
+    {
+      "name": "area:data",
+      "color": "a8142b",
+      "description": "Supabase schema, storage, security"
+    },
+    {
+      "name": "area:booking",
+      "color": "d7261e",
+      "description": "Request form, validation, emails"
+    },
+    {
+      "name": "area:admin",
+      "color": "3a1013",
+      "description": "Admin dashboard"
+    },
+    {
+      "name": "area:content",
+      "color": "e8c9c4",
+      "description": "Copy, photos, video, team info"
+    },
+    {
+      "name": "type:feature",
+      "color": "1f6feb",
+      "description": "New functionality"
+    },
+    {
+      "name": "type:chore",
+      "color": "8a8a8a",
+      "description": "Setup, config, maintenance"
+    },
+    {
+      "name": "type:content",
+      "color": "f2cc60",
+      "description": "Content to collect or write"
+    },
+    {
+      "name": "needs-kurt",
+      "color": "fbca04",
+      "description": "Needs Kurt: an account, a decision or real content"
+    },
+    {
+      "name": "blocked",
+      "color": "000000",
+      "description": "Waiting on something else"
+    }
+  ],
+  "milestones": [
+    {
+      "title": "M1 · Setup",
+      "description": "Repo, Cloudflare Workers deploy, design tokens, theme toggle, uncbidyo.org DNS on Cloudflare."
+    },
+    {
+      "title": "M2 · Public site",
+      "description": "All wireframe sections built as components with placeholder content, responsive and accessible."
+    },
+    {
+      "title": "M3 · Data (Supabase)",
+      "description": "Supabase project, schema, storage and security rules; site sections read real data."
+    },
+    {
+      "title": "M4 · Booking",
+      "description": "Request form saves to the database, enforces the 7-day rule and sends emails."
+    },
+    {
+      "title": "M5 · Admin",
+      "description": "Invite-only dashboard: requests inbox with accept/decline, albums, team, organizations."
+    },
+    {
+      "title": "M6 · Launch",
+      "description": "Real content, performance, SEO and accessibility checks, uncbidyo.org switched to the new site."
+    }
+  ],
+  "issues": [
+    {
+      "milestone": "M1 · Setup",
+      "title": "Scaffold Next.js 16 project for Cloudflare Workers",
+      "labels": [
+        "area:infra",
+        "type:chore"
+      ],
+      "body": "Next.js 16 + Tailwind 4 + OpenNext Cloudflare adapter, design tokens, self-hosted fonts, theme toggle, placeholder home page.\n\n- [x] `npm run build` and `opennextjs-cloudflare build` pass\n- [x] Worker size under 3 MiB (≈1 MB gzip)\n- [x] Light/dark toggle persists across reloads",
+      "state": "closed"
+    },
+    {
+      "milestone": "M1 · Setup",
+      "title": "Create GitHub org and push the repo",
+      "labels": [
+        "area:infra",
+        "type:chore",
+        "needs-kurt"
+      ],
+      "body": "Using the BIDYO org email.\n\n- [ ] GitHub account on the org email\n- [ ] Organization `uncbidyo` created, Kurt invited as Owner\n- [ ] Private repo `bidyo-web` created and code pushed to `main`",
+      "state": "open"
+    },
+    {
+      "milestone": "M1 · Setup",
+      "title": "Create Cloudflare account and connect Workers Builds",
+      "labels": [
+        "area:infra",
+        "type:chore",
+        "needs-kurt"
+      ],
+      "body": "- [ ] Cloudflare account on the org email (Free plan), Kurt invited as Administrator\n- [ ] Workers & Pages → Import repository → `bidyo-web`\n- [ ] Build: `npx opennextjs-cloudflare build` · Deploy: `npx wrangler deploy`\n- [ ] Non-production branch deploy: `npx wrangler versions upload`\n- [ ] First deploy live on `*.workers.dev`",
+      "state": "open"
+    },
+    {
+      "milestone": "M1 · Setup",
+      "title": "Move uncbidyo.org DNS to Cloudflare",
+      "labels": [
+        "area:infra",
+        "type:chore",
+        "needs-kurt"
+      ],
+      "body": "Domain stays registered at Vercel for now.\n\n- [ ] Check renewal date in Vercel\n- [ ] Add uncbidyo.org to Cloudflare (Free), compare imported records with Vercel's (site, MX, TXT)\n- [ ] Records pointing to Vercel set to DNS only (grey cloud)\n- [ ] DNSSEC off in Vercel (if it was on), wait 24h\n- [ ] Vercel → Domains → uncbidyo.org → Nameservers → Edit → Cloudflare's two nameservers\n- [ ] Cloudflare shows the zone as Active",
+      "state": "open"
+    },
+    {
+      "milestone": "M1 · Setup",
+      "title": "Attach new.uncbidyo.org preview domain",
+      "labels": [
+        "area:infra",
+        "type:chore"
+      ],
+      "body": "- [ ] Workers → bidyo-web → Domains & Routes → Custom domain `new.uncbidyo.org`\n- [ ] Old site still served on `uncbidyo.org`",
+      "state": "open"
+    },
+    {
+      "milestone": "M1 · Setup",
+      "title": "Branch protection and PR workflow",
+      "labels": [
+        "area:infra",
+        "type:chore"
+      ],
+      "body": "- [ ] Protect `main`: changes go through pull requests\n- [ ] Each PR gets a Cloudflare preview link\n- [ ] Add a CI check: lint + typecheck + build",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Navbar and mobile menu",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "- [ ] Sticky, shrinks after scrolling\n- [ ] Links: Work, Services, How it works, Team, FAQ; theme toggle; Book a shoot\n- [ ] Phone: full-screen menu sheet, focus trapped, Esc closes",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Hero with background reel",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "Beyonk-style background video.\n\n- [ ] Reel on the right 60% at 50% opacity, masked to fade before the headline\n- [ ] Phones: full-bleed at 35% with bottom fade\n- [ ] `prefers-reduced-motion` / save-data → poster image\n- [ ] “Watch the reel” opens the full reel with sound in a modal\n- [ ] Headline, intro, Book a shoot CTA, 7-day note",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Proof strip (5+ organizations)",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "- [ ] Crimson band with the count and organization names/logos\n- [ ] Falls back to the number alone when no names are approved",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Services list",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "- [ ] Four rows: Event Coverage, Photoshoot, Video Shoot, Film Making\n- [ ] Row fills crimson on hover; photo preview follows cursor on desktop\n- [ ] Click opens booking form with that service pre-selected",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Album section with filters",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "- [ ] Filters: All · Portrait · Video · Album (Facebook)\n- [ ] Dense grid of slow-crossfading tiles with title + date captions\n- [ ] Portrait → lightbox gallery; Video → player; Album → opens Facebook album in new tab\n- [ ] Respects reduced motion",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "How it works (4 steps)",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "Send a request → We review it → We plan together → Shoot & deliver, with the 7-day rule.",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Who we serve cards",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "Organizations / Faculty & offices / Students. Each opens the form with “Requesting as” pre-selected.",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "About and team grid",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "- [ ] Group photo + “We are UNC BIDYO.” copy\n- [ ] Team grid with hover photo swap, advisers first, “Show all” after 8",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "FAQ accordion",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "Booking lead time, how the rate works, deliverables, off-campus events, photo usage.",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Booking section UI",
+      "labels": [
+        "area:site",
+        "area:booking",
+        "type:feature"
+      ],
+      "body": "Form layout only (submission in M4).\n\n- [ ] Fields: name, email, phone, requesting as, organization, event title, dates, services, crew, **proposed rate (₱)**, deliverables\n- [ ] Start date picker blocks dates < today + 7\n- [ ] Also opens as a modal from every Book button",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Footer",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "White logo, motto, address, socials, Book a shoot.",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Responsive, accessibility and performance pass",
+      "labels": [
+        "area:site",
+        "type:chore"
+      ],
+      "body": "- [ ] 360px → 1440px with no horizontal scroll\n- [ ] Keyboard and screen reader check, visible focus rings\n- [ ] Contrast checked in both themes\n- [ ] Lighthouse ≥ 90 on mobile",
+      "state": "open"
+    },
+    {
+      "milestone": "M2 · Public site",
+      "title": "Collect hero reel and sample photos",
+      "labels": [
+        "area:content",
+        "type:content",
+        "needs-kurt"
+      ],
+      "body": "- [ ] Short muted loop (≤20s, MP4 + WebM, ~4 MB) and a poster frame\n- [ ] Full reel link (YouTube/Facebook)\n- [ ] 6–10 photos per category for placeholders",
+      "state": "open"
+    },
+    {
+      "milestone": "M3 · Data (Supabase)",
+      "title": "Create Supabase project on the org account",
+      "labels": [
+        "area:data",
+        "type:chore",
+        "needs-kurt"
+      ],
+      "body": "- [ ] Supabase org on the org email, Kurt invited\n- [ ] Project in the closest region (Singapore)\n- [ ] Keys stored as Cloudflare secrets and in `.dev.vars` locally",
+      "state": "open"
+    },
+    {
+      "milestone": "M3 · Data (Supabase)",
+      "title": "Database schema and migrations",
+      "labels": [
+        "area:data",
+        "type:feature"
+      ],
+      "body": "Tables in `supabase/migrations`:\n\n- [ ] `requests` (contact, org, requester type, event, dates, services, crew, proposed_rate, deliverables, status pending/accepted/declined, decided_by, decided_at, notes)\n- [ ] `albums` (title, category portrait/video/facebook, facebook_url, cover, date, order, visible)\n- [ ] `media` (album_id, type, path/url, caption, order)\n- [ ] `team_members`, `organizations`\n- [ ] `profiles` with role owner/approver",
+      "state": "open"
+    },
+    {
+      "milestone": "M3 · Data (Supabase)",
+      "title": "Row-level security and roles",
+      "labels": [
+        "area:data",
+        "type:feature"
+      ],
+      "body": "- [ ] Public: insert into `requests` only; read visible albums/media/team/orgs\n- [ ] Approver: read requests, update status\n- [ ] Owner: everything\n- [ ] Tests for each policy",
+      "state": "open"
+    },
+    {
+      "milestone": "M3 · Data (Supabase)",
+      "title": "Storage buckets and image resizing",
+      "labels": [
+        "area:data",
+        "type:feature"
+      ],
+      "body": "- [ ] Buckets for album media and team photos\n- [ ] Resized/WebP delivery (Supabase transforms or Cloudinary)\n- [ ] Custom Next image loader",
+      "state": "open"
+    },
+    {
+      "milestone": "M3 · Data (Supabase)",
+      "title": "Site sections read from the database",
+      "labels": [
+        "area:data",
+        "area:site",
+        "type:feature"
+      ],
+      "body": "Album, team and organizations come from Supabase; pages rebuild or revalidate on change (switch OpenNext cache to KV/R2 if needed).",
+      "state": "open"
+    },
+    {
+      "milestone": "M4 · Booking",
+      "title": "Submit requests to the database",
+      "labels": [
+        "area:booking",
+        "type:feature"
+      ],
+      "body": "- [ ] Server action / route handler validates with a shared schema\n- [ ] 7-day rule enforced server-side\n- [ ] Friendly success and error states",
+      "state": "open"
+    },
+    {
+      "milestone": "M4 · Booking",
+      "title": "Spam protection",
+      "labels": [
+        "area:booking",
+        "type:feature"
+      ],
+      "body": "Cloudflare Turnstile on the form + basic rate limiting.",
+      "state": "open"
+    },
+    {
+      "milestone": "M4 · Booking",
+      "title": "Set up Resend on uncbidyo.org",
+      "labels": [
+        "area:booking",
+        "type:chore",
+        "needs-kurt"
+      ],
+      "body": "- [ ] Resend account on the org email\n- [ ] Domain verified (SPF/DKIM records added in Cloudflare)\n- [ ] Decide which inbox receives new-request notifications",
+      "state": "open"
+    },
+    {
+      "milestone": "M4 · Booking",
+      "title": "Request emails",
+      "labels": [
+        "area:booking",
+        "type:feature"
+      ],
+      "body": "- [ ] Client: “Request received”\n- [ ] BIDYO: new request notification with all details\n- [ ] Client: accepted / declined (with optional note)",
+      "state": "open"
+    },
+    {
+      "milestone": "M5 · Admin",
+      "title": "Admin sign-in (invite only)",
+      "labels": [
+        "area:admin",
+        "type:feature"
+      ],
+      "body": "- [ ] `/admin` behind Supabase Auth, no public sign-up\n- [ ] Owner can invite users and set role (approver)",
+      "state": "open"
+    },
+    {
+      "milestone": "M5 · Admin",
+      "title": "Requests inbox with accept/decline",
+      "labels": [
+        "area:admin",
+        "type:feature"
+      ],
+      "body": "- [ ] List with filters (pending/accepted/declined), sorted by event date\n- [ ] Detail view; accept/decline with note → triggers email\n- [ ] Records who decided and when",
+      "state": "open"
+    },
+    {
+      "milestone": "M5 · Admin",
+      "title": "Album manager",
+      "labels": [
+        "area:admin",
+        "type:feature"
+      ],
+      "body": "- [ ] Create albums: Portrait/Video uploads, or Facebook link + cover\n- [ ] Reorder, hide/show, captions",
+      "state": "open"
+    },
+    {
+      "milestone": "M5 · Admin",
+      "title": "Team and organizations manager",
+      "labels": [
+        "area:admin",
+        "type:feature"
+      ],
+      "body": "Add/edit officers (photo + hover photo, role, order) and served organizations (name, logo, show).",
+      "state": "open"
+    },
+    {
+      "milestone": "M5 · Admin",
+      "title": "Decide approver access",
+      "labels": [
+        "area:admin",
+        "type:content",
+        "needs-kurt"
+      ],
+      "body": "Confirm whether the President gets the approver role, and who else (if anyone).",
+      "state": "open"
+    },
+    {
+      "milestone": "M6 · Launch",
+      "title": "Real content pass",
+      "labels": [
+        "area:content",
+        "type:content",
+        "needs-kurt"
+      ],
+      "body": "- [ ] Service descriptions and FAQ answers\n- [ ] 5+ organization names (with their OK)\n- [ ] Final team list and photos\n- [ ] Albums uploaded",
+      "state": "open"
+    },
+    {
+      "milestone": "M6 · Launch",
+      "title": "SEO and social sharing",
+      "labels": [
+        "area:site",
+        "type:feature"
+      ],
+      "body": "Titles, descriptions, Open Graph image, sitemap, robots, favicon set.",
+      "state": "open"
+    },
+    {
+      "milestone": "M6 · Launch",
+      "title": "Final QA",
+      "labels": [
+        "area:site",
+        "type:chore"
+      ],
+      "body": "Both themes, phones/tablets/desktop, Lighthouse, accessibility audit, form end-to-end test.",
+      "state": "open"
+    },
+    {
+      "milestone": "M6 · Launch",
+      "title": "Switch uncbidyo.org to the new site",
+      "labels": [
+        "area:infra",
+        "type:chore",
+        "needs-kurt"
+      ],
+      "body": "- [ ] Remove old Vercel DNS records for `uncbidyo.org` and `www`\n- [ ] Add both as custom domains on the `bidyo-web` Worker\n- [ ] Remove the domain from the old Vercel project\n- [ ] Optional: transfer registration to Cloudflare Registrar (after 60 days)",
+      "state": "open"
+    }
+  ]
+}
