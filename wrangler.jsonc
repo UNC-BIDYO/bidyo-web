@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Cloudflare Worker that serves the site. The name becomes bidyo-web.<account>.workers.dev
+  "name": "bidyo-web",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "bidyo-web" }
+  ],
+  "observability": { "enabled": true }
+  // uncbidyo.org is attached in the Cloudflare dashboard (Workers > bidyo-web > Domains)
+  // or by adding: "routes": [{ "pattern": "uncbidyo.org", "custom_domain": true }]
+}

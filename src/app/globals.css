@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Expose design tokens to Tailwind: bg-bg, bg-surface, bg-band, text-text, text-accent, border-border… */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-band: var(--band);
+  --color-hero: var(--hero);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-on-band: var(--on-band);
+  --color-on-band-muted: var(--on-band-muted);
+  --color-border: var(--border);
+  --color-hairline: var(--hairline);
+  --color-tally: var(--tally);
+
+  --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-pill: var(--radius-pill);
+
+  --shadow-lift: var(--shadow-lift);
+}
+
+/* tokens.css type classes read --font-serif / --font-sans / --font-mono */
+:root {
+  --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  transition: background-color 200ms ease-out, color 200ms ease-out;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.on-band :focus-visible {
+  outline-color: var(--on-band);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Logo swap per theme */
+.logo-dark { display: none; }
+[data-theme="dark"] .logo-light { display: none; }
+[data-theme="dark"] .logo-dark { display: block; }
+
+/* Hero reel placeholder until the real video is added */
+.hero-reel {
+  background:
+    repeating-linear-gradient(45deg, transparent 0 14px, rgb(255 255 255 / 0.12) 14px 15px),
+    linear-gradient(135deg, var(--crimson), #3b2b2b 60%, #6b5a50);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+@media (min-width: 768px) {
+  .hero-reel { mask-image: linear-gradient(to right, transparent 0%, #000 40%); }
+}
+.hero-em { color: var(--on-band-muted); }
+[data-theme="dark"] .hero-em { color: var(--accent); }

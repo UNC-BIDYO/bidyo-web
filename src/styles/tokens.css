@@ -1,0 +1,120 @@
+/* BIDYO — generated from design/tokens.json by scripts/sync-tokens.mjs. Do not edit. */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --crimson: #8c0d22;
+  --crimson-deep: #5c0a18;
+  --crimson-black: #1a0306;
+  --logo-maroon: #6e0a0e;
+  --bg: #f4efe7;
+  --surface: #f1e1dc;
+  --band: var(--crimson);
+  --hero: var(--crimson-black);
+  --text: #121010;
+  --text-muted: #5f5854;
+  --accent: var(--crimson);
+  --primary: var(--crimson);
+  --primary-hover: #a8142b;
+  --on-primary: #f4efe7;
+  --on-band: #f4efe7;
+  --on-band-muted: #e8c9c4;
+  --border: #857a71;
+  --hairline: #e2cfc8;
+  --tally: #d7261e;
+  --shadow-none: none;
+  --shadow-lift: 0 12px 32px rgba(18, 16, 16, 0.18);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #160304;
+  --surface: #2a0507;
+  --band: var(--crimson-deep);
+  --hero: #0e0203;
+  --text: #f4efe7;
+  --text-muted: #c9b9ae;
+  --accent: #f07a8a;
+  --primary: #b3122c;
+  --primary-hover: #9e0f26;
+  --border: #8a6a66;
+  --hairline: #3a1013;
+  --tally: #ef4b42;
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 120px;
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+}
+
+.type-display {
+  font-family: var(--font-serif);
+  font-size: 104px;
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.type-h1 {
+  font-family: var(--font-serif);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.type-h2 {
+  font-family: var(--font-serif);
+  font-size: 44px;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.type-h3 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 400;
+}
+.type-body-lg {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  line-height: 30px;
+  font-weight: 400;
+}
+.type-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.type-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.type-small {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.type-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
